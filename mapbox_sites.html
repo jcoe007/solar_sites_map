@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Solar Projects Map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+mapboxgl.accessToken = 'MAPBOX_TOKEN';
+const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v11',
+    center: [174, -41], 
+    zoom: 5
+});
+
+const projects = [
+    { name: "Ashburton 1 & 2", coords: [171.72603, -43.94003] },
+    { name: "Ashburton 3", coords: [171.71448, -43.94743] },
+    { name: "Carterton 1", coords: [175.57624, -40.94712] },
+    { name: "Waiuku", coords: [174.76428, -37.21976] },
+    { name: "Waimakariri 1", coords: [172.5064, -43.37135] },
+    { name: "Talleys - Fairfield", coords: [171.80984, -43.87045] },
+    { name: "Reefton", coords: [171.85826, -42.08971] },
+    { name: "Kuratau", coords: [175.75289, -38.86344] },
+    { name: "Matangi", coords: [175.43227, -37.80364] },
+    { name: "Timaru", coords: [171.14771, -44.28149] },
+    { name: "Carterton 2", coords: [175.56213, -41.03893] },
+    { name: "Waimakariri 2", coords: [172.53901, -43.41466] },
+    { name: "Morrinsille", coords: [175.67815, -37.74862] },
+    { name: "Tarras", coords: [169.34232, -44.84783] },
+    { name: "Ngāruawāhia", coords: [175.16162, -37.68825] },
+    { name: "Papamoa", coords: [176.27449, -37.71834] },
+    { name: "Okoia", coords: [175.12937, -39.94237] },
+    { name: "Omya - Te Kuiti", coords: [175.16237, -38.29049] }
+];
+
+projects.forEach(p => {
+    new mapboxgl.Marker()
+      .setLngLat(p.coords)
+      .setPopup(new mapboxgl.Popup().setText(p.name))
+      .addTo(map);
+});
+</script>
+</body>
+</html>
