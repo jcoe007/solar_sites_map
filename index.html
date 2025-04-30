@@ -20,6 +20,29 @@
     .operational { background-color: #2ecc71; }    /* green */
     .construction { background-color: #f39c12; }   /* orange */
     .development { background-color: #3498db; }    /* blue */
+    #legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: white;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      z-index: 1;
+    }
+    
+    .key {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 6px;
+      border: 1px solid #ccc;
+    }
+    .key.operational { background-color: #2ecc71; }
+    .key.construction { background-color: #f39c12; }
+    .key.development { background-color: #3498db; }
   </style>
 </head>
 <body>
@@ -64,5 +87,11 @@ projects.forEach(p => {
     .addTo(map);
 });
 </script>
+<div id="legend">
+  <strong>Status</strong><br>
+  <span class="key operational"></span> Operational<br>
+  <span class="key construction"></span> Under Construction<br>
+  <span class="key development"></span> In Development
+</div>
 </body>
 </html>
